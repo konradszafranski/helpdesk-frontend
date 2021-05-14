@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="description" content="restaurant with the best food in country">
+<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="icon" href="">
+
+<body class="w3-light-grey" style="height:100vh">
+
+  <div class="w3-display-container" style="height:100vh;">
+    <h1 class="w3-display-middle w3-text-cyan" style="vertical-align:middle;"> Helpdesk System </h1>
+  </div>
+
+  <script type="module">
+
+    import { isUserLogged } from "./service/loginService.js"
+
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(function() {
+        if(isUserLogged()){
+          location.assign("http://127.0.0.1:3000/mainPage.html");
+        } else {
+          location.assign("http://127.0.0.1:3000/loginPage.html");
+        }
+      }, 2000);
+    });
+  </script>
+
+</body>
+
+</html>

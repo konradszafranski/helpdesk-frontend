@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="description" content="restaurant with the best food in country">
+<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="icon" href="">
+
+<body class="w3-light-grey" style="height: 100vh">
+
+    <div class="w3-sidebar w3-collapse w3-white w3-animated-left" style="width:12%">
+      <div class="w3-card-4" style="height:20%">  </div>
+    </div>
+
+    <div class="w3-main" style="margin-left:12%;">
+
+      <div id="addUserForm" class="w3-container w3-row-padding w3-border" style="padding-top:60px">
+
+        <div class="w3-half">
+          <label class="w3-text-teal"><b>Login</b></label>
+          <input id="username" class="w3-input w3-border" type="text">
+
+          <label class="w3-text-teal"><b>Hasło</b></label>
+          <input id="password" class="w3-input w3-border" type="text">
+
+          <label class="w3-text-teal"><b>Imie</b></label>
+          <input id="name" class="w3-input w3-border" type="text">
+
+          <label class="w3-text-teal"><b>Nazwisko</b></label>
+          <input id="surname" class="w3-input w3-border" type="text">
+
+          <label class="w3-text-teal"><b>Stanowisko</b></label>
+          <input id="position" class="w3-input w3-border" type="text">
+
+          <label class="w3-text-teal"><b>Numer telefonu</b></label>
+          <input id="phoneNumber" class="w3-input w3-border" type="text">
+
+          <button id="addUser" class="w3-btn w3-blue-grey" type="button">Dodaj Użytkownika</button>
+
+          <button id="getUsersList" class="w3-btn w3-blue-grey" type="button">Lista Użytkowników</button>
+        </div>
+
+        <div class="w3-half">
+          <h2>Uprawnienia</h2>
+            <p>
+            <input id="GET_EMPLOYEE_LIST" class="w3-check" type="checkbox" checked="checked">
+            <label>Pobierz pracowników</label></p>
+            <p>
+            <input id="ADD_EMPLOYEE" class="w3-check" type="checkbox">
+            <label>Dodaj Pracownika</label></p>
+            <p>
+        </div>
+    </div>
+
+  </div>
+
+  <script type="module">
+
+    import { createUser, getAllUsers } from "./button/buttonFunction.js";
+
+    document.getElementById("addUser").addEventListener("click", function() {
+      let addUserForm = document.getElementById("addUserForm");
+      createUser(addUserForm);
+    });
+    document.getElementById("getUsersList").addEventListener("click", async function() {
+      let mainDiv = document.querySelector(".w3-main");
+      let listDiv = await getAllUsers();
+      mainDiv.appendChild(listDiv);
+    });
+  </script>
+</body>
+
+</html>
