@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="description" content="Helpdesk App">
+<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="icon" href="">
+
+<body class="w3-main w3-light-grey" style="height:100vh">
+
+    <div class="w3-center w3-sidebar w3-collapse w3-white w3-animated-left" style="width:12%">
+      <div class="w3-card-4" style="height:20%">
+        <img src="../user.png" alt="Avatar" style="width:80%">
+      </div>
+      <div id="userDetails">
+
+      </div>
+    </div>
+
+    <div class="w3-stretch" style="margin-left:12%; height:100vh">
+
+      <div class="w3-bar w3-teal">
+        <button id="addTask" class="w3-bar-item w3-button" type="button" style="min-width:10%">ADD CASE</button>
+        <button id="listTask" class="w3-bar-item w3-button" type="button" style="min-width:10%">LIST OF CASES</button>
+      </div>
+
+      <div id="mainContent" class="w3-container">
+
+      </div>
+
+    </div>
+
+  <script type="module">
+
+    import { fillSidebar } from "./commonView/buildSidebar.js";
+    import { buildAddCaseView } from "./officeView/buildAddCaseView.js";
+    import { buildMyCasesView } from "./officeView/buildMyCasesView.js";
+
+    document.getElementById("addTask").addEventListener("click", function() {
+      const mainDiv = document.getElementById("mainContent");
+      buildAddCaseView(mainDiv);
+    });
+
+    document.getElementById("listTask").addEventListener("click", function() {
+      const mainDiv = document.getElementById("mainContent");
+      buildMyCasesView(mainDiv);
+    });
+
+    //fill sidebar with userDetails
+    let userDetailsDiv = document.getElementById("userDetails");
+    fillSidebar(userDetailsDiv);
+
+  </script>
+
+</body>
+
+</html>

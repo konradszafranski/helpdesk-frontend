@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
-<meta name="description" content="restaurant with the best food in country">
+<meta name="description" content="Helpdesk App">
 <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -15,16 +15,32 @@
 
   <script type="module">
 
-    import { isUserLogged } from "./service/loginService.js"
+    import { isUserLogged, getUserRole } from "./service/service.js"
 
     document.addEventListener("DOMContentLoaded", function() {
       setTimeout(function() {
-        if(isUserLogged()){
-          location.assign("http://127.0.0.1:3000/mainPage.html");
+
+        console.log("event - navigate to");
+
+        if(isUserLogged()) {
+          let userRole = getUserRole();
+
+          //navigate to correct view
+          switch(userRole) {
+            case "Office":
+              location.assign("http://127.0.0.1:3000/panel/officePanel.html");
+              break;
+            case "Helpdesk":
+              location.assign("http://127.0.0.1:3000/panel/helpdeskPanel.html");
+              break;
+            case "Administrator":
+              location.assign("http://127.0.0.1:3000/panel/adminPanel.html");
+              break;
+          }
         } else {
-          location.assign("http://127.0.0.1:3000/loginPage.html");
+          location.assign("http://127.0.0.1:3000/panel/loginPanel.html");
         }
-      }, 2000);
+      }, 1500);
     });
   </script>
 

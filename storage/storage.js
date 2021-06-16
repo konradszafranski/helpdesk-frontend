@@ -7,20 +7,25 @@ function authTokenExist() {
   }
 }
 
+function getStorageValue(key) {
+  let jsonItem = sessionStorage.getItem(key);
+  let item = JSON.parse(jsonItem);
+  return item;
+}
+
 function setStorageValue(key, value) {
+  console.log("value");
+  console.log(value);
+  console.log(typeof value);
+
   try {
-    sessionStorage.setItem(key, value);
+    sessionStorage.setItem(key, JSON.stringify(value));
     return true;
   } catch (e) {
     console.log("error");
     console.log(e);
     return false;
   }
-}
-
-function getStorageValue(key) {
-  let token = sessionStorage.getItem(key);
-  return token;
 }
 
 export { setStorageValue, authTokenExist, getStorageValue }

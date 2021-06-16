@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS</title>
+<meta name="description" content="Helpdesk App">
+<meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="icon" href="">
+
+<body class="w3-main w3-light-grey" style="height: 100vh">
+
+    <div class="w3-center w3-sidebar w3-collapse w3-white w3-animated-left" style="width:12%">
+      <div class="w3-card-4" style="height:20%">
+        <img src="user.png" alt="Avatar" style="width:80%">
+      </div>
+      <div id="userDetails">
+
+      </div>
+    </div>
+
+    <div class="w3-stretch" style="margin-left:12%;height:100vh">
+
+      <div class="w3-bar w3-teal">
+        <a href="#" class="w3-bar-item w3-button" style="min-width:10%">Settings</a>
+        <a href="#" class="w3-bar-item w3-button" style="min-width:10%">Users</a>
+        <a href="#" class="w3-bar-item w3-button" style="min-width:10%">Cases</a>
+      </div>
+
+      <div id="mainContent" class="w3-container">
+
+        <div id="addUserForm" class="w3-container w3-row-padding" style="padding-top:60px">
+
+          <h1 class="w3-center w3-border-bottom w3-text-indigo" style="margin-bottom:20px">ADD USER</h1>
+
+          <div class="w3-half">
+            <label class="w3-text-teal"><b>Login</b></label>
+            <input id="username" class="w3-input w3-border" type="text">
+
+            <label class="w3-text-teal"><b>Password</b></label>
+            <input id="password" class="w3-input w3-border" type="text">
+
+            <label class="w3-text-teal"><b>Name</b></label>
+            <input id="name" class="w3-input w3-border" type="text">
+
+            <label class="w3-text-teal"><b>Surname</b></label>
+            <input id="surname" class="w3-input w3-border" type="text">
+
+            <label class="w3-text-teal"><b>Position</b></label>
+            <input id="position" class="w3-input w3-border" type="text">
+
+            <label class="w3-text-teal"><b>Phone Number</b></label>
+            <input id="phoneNumber" class="w3-input w3-border" type="text">
+
+            <button id="addUser" class="w3-btn w3-blue-grey" type="button">Add User</button>
+
+            <button id="getUsersList" class="w3-btn w3-blue-grey" type="button">List Of Users</button>
+          </div>
+
+          <div class="w3-half">
+            <h2 class="w3-text-indigo">Role</h2>
+              <p>
+              <input class="w3-radio" type="radio" name="role" value="office" checked="checked">
+              <label>Office</label></p>
+              <p>
+              <input class="w3-radio" type="radio" name="role" value="helpdesk">
+              <label>Helpdesk</label></p>
+              <p>
+              <input class="w3-radio" type="radio" name="role" value="administrator">
+              <label>Administrator</label></p>
+              <p>
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+  <script type="module">
+
+    import { createUser, getAllUsers } from "./button/buttonFunction.js";
+    import { fillSidebar } from "./commonView/buildSidebar.js";
+
+    document.addEventListener("DOMContentLoaded", function() {
+      let userDetailsDiv = document.getElementById("userDetails");
+      fillSidebar(userDetailsDiv);
+    });
+    document.getElementById("addUser").addEventListener("click", function() {
+      let addUserForm = document.getElementById("addUserForm");
+      createUser(addUserForm);
+    });
+    document.getElementById("getUsersList").addEventListener("click", async function() {
+      let mainDiv = document.querySelector(".w3-main");
+      let listDiv = await getAllUsers();
+      mainDiv.appendChild(listDiv);
+    });
+  </script>
+
+</body>
+
+</html>

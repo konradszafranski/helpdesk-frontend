@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
-<meta name="description" content="restaurant with the best food in country">
+<meta name="description" content="Helpdesk App">
 <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -9,36 +9,32 @@
 
 <body class="w3-light-grey">
 
-    <div class="w3-sidebar w3-collapse w3-white w3-animated-left" style="width:300px">
-      <div class="w3-card-4" style="height:20%">  </div>
-    </div>
+      <div class="w3-container w3-display-topmiddle" style="margin-top:30px">
+          <h1 class="w3-text-teal"><i>Helpdesk App</i></h1>
+      </div>
 
-    <div class="w3-main w3-light-grey" style="margin-left:300px; height: 1000px">
-        <div class="w3-container" style="padding-top:60px; max-width:1000px">
-          <form>
+      <div class="w3-container w3-display-middle">
+          <form style="min-width:500px">
             <label class="w3-text-teal"><b>Login</b></label>
-            <input id="username" class="w3-input w3-border" type="text">
+            <input id="username" class="w3-input w3-border" type="text" style="margin-bottom:5px">
 
             <label class="w3-text-teal"><b>Hasło</b></label>
-            <input id="password" class="w3-input w3-border" type="text">
+            <input id="password" class="w3-input w3-border" type="text" style="margin-bottom:5px">
 
             <button id="login" class="w3-btn w3-blue-grey" type="button">Zaloguj</button>
-
-            <button id="logout" class="w3-btn w3-blue-grey" type="button">Wyloguj</button>
           </form>
       </div>
-    </div>
 
   <script type="module">
 
-    import { login } from "./button/buttonFunction.js"
+    import { login } from "/button/buttonFunction.js"
 
     document.getElementById("login").addEventListener("click", async function() {
       let result = await login(this.parentElement);
       console.log("result");
       console.log(result);
       if(result) {
-        location.assign("http://127.0.0.1:3000/mainPage.html");
+        location.assign("http://127.0.0.1:3000/index.html");
       } else {
         alert("Error");
       }
